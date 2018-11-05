@@ -86,7 +86,7 @@ def train(model, batch_size, num_epochs, lr, path_to_save_imgs):
             optimizer.zero_grad()
             outputs, (ht, ct) = model(features[:,:-1,:])
             #print(';;;;;;;;;;;;;;;;;;;;;;;;;', features[:,-1,:].size())
-            loss = MSE(outputs, features[:,-1,:])
+            loss = MSE(ht[-1], features[:,-1,:])
             loss.backward()
             train_loss += loss.item()
             optimizer.step()
