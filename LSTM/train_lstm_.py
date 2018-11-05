@@ -108,7 +108,7 @@ def train(model, batch_size, num_epochs, lr, path_to_save_imgs):
 if __name__ == "__main__":
     os.environ["CUDA_VISIBLE_DEVICES"]="0"
     #model = LSTM(embedding_dim = 10 , hidden_dim = num_dim , output_size = num_dim)
-    model = nn.LSTM(10, 10, num_layers=1)
+    model = nn.LSTM(10, 10, num_layers=1, batch_first=True)
     #model.load_state_dict(torch.load('/export/home/mdorkenw/HumanGaitDataset/VAE/VAE_serpate_new'+'/cae_bce.pth'))
     path_to_save_imgs = 'model/'
     batch_size = 100; num_epochs = 100; lr = 1e-3
