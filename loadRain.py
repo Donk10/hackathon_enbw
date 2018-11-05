@@ -35,11 +35,9 @@ def loadRainData():
     newValueArray = np.zeros_like(timeStamps)
     for i in range(timeStamps.shape[0]):
         # newValueArray[i] = rainValue_mm[np.where(rainValue_mm[:,0] == timeStamps[i])[0][0],1]
-        index = np.where(rainValue_mm[:,1] == int(timeStamps[i]))[0]
+        index = np.where(rainValue_mm[:,0] == int(timeStamps[i]))[0]
         if index.size > 0:
-            newValueArray[i] = rainValue_mm[np.where(rainValue_mm[:,1] == int(timeStamps[i]))[0][0],2]
-            if newValueArray[i] == -1:
-                newValueArray[i] = 9.
+            newValueArray[i] = rainValue_mm[np.where(rainValue_mm[:,0] == int(timeStamps[i]))[0][0],1]
         if index.size == 0:
             newValueArray[i] = newValueArray[i-1]
     return newValueArray
