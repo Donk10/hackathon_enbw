@@ -2,26 +2,23 @@
 
 import numpy as np
 
-# load file with cloud data
-file_in_npArray = np.loadtxt("./data/N_MN008.txt", dtype=str, delimiter=";")
+def loadCloudData():
+    # load file with cloud data
+    file_in_npArray = np.loadtxt("./data/N_MN008.txt", dtype=str, delimiter=";")
 
-# store data and description in 2 arrays
-description = file_in_npArray[0,1:4]
-data = np.array(file_in_npArray[1:,1:4], dtype=int)
+    # store data and description in 2 arrays
+    description = file_in_npArray[0,1:4]
+    data = np.array(file_in_npArray[1:,1:4], dtype=int)
 
-# Numbers of weather stations
-#weatherStation = 13674 # Waibstadt
-weatherStation = 5906 # Mannheim
+    # Numbers of weather stations
+    #weatherStation = 13674 # Waibstadt
+    weatherStation = 5906 # Mannheim
 
-# Get weather for mentioned Station
-cloudValueForStation = data[np.where(data == weatherStation)[0][0]:
-                           np.where(data == weatherStation)[0][-1]]
-# Only get data for relevant time frame from 01.12.2017 to 01.08.2018
-cloudValueForStation = cloudValueForStation[
-                        np.where(cloudValueForStation[:,1] == 201712010400)[0][0]
-                        :np.where(cloudValueForStation[:,1] == 201808012300)[0][0]
-                        ]
-print(cloudValueForStation.shape)
+    # Get weather for mentioned Station
+    cloudValueForStation = data[np.where(data == weatherStation)[0][0]:
+                               np.where(data == weatherStation)[0][-1]]
+    # return cloud values in numpy array for specified station
+    return cloudValueForStation
 
 '''
 Function parameters, intervalls, integer:
@@ -66,7 +63,8 @@ def getCloudValue(year, month, day, time, cloudArray):
 
 
 # EXAMPLE: how to get values
-print(getCloudValue(2017, 12, 4, 5, cloudValueForStation))
+cloudArray = loadCloudData()
+print(getCloudValue(2017, 12, 4, 5, cloudArray))
 
 # Save cloud data for specified weather station into .txt file
 # np.savetxt("cloudValues.txt", cloudValueForStation)
