@@ -36,10 +36,15 @@ Function parameters, intervalls, integer:
 
     -> as integers
 
-    cloudValueForStation
-    -> numpy array
+    cloudArray
+    -> numpy array with timeStamps and corresponding values
+
+Returns:
+    None, if timestamp not found
+    -1, for sky not visible
+    0...8, sunny to cloudy
 '''
-def getCloudValue(year, month, day, time, cloudValueForStation):
+def getCloudValue(year, month, day, time, cloudArray):
     # write input into strings suitable for merging into timeStamp
     yearStr = str(year)
     monthStr = ("0"+str(month))[-2:]
@@ -47,13 +52,17 @@ def getCloudValue(year, month, day, time, cloudValueForStation):
     timeStr = ("0"+str(time)+"00")[-4:]
     # merge into timeStamp
     timeStamp = int(yearStr + monthStr + dayStr + timeStr)
-    # index of cloudValueForStation, where timeStamp is
-    index = np.where(cloudValueForStation == timeStamp)
+    # index of cloudArray, where timeStamp is
+    index = np.where(cloudArray == timeStamp)
 
-    # check if element is in cloudValueForStation-Array
+    # check if element is in cloudArray-Array
     if index[0].size == 0:
         return None
     else:
         index = index[0][0]
         # cloud value at requested time
-        return cloudValueForStation[index]
+        return cloudArray[index,2]
+
+
+# EXAMPLE: how to get values
+print(getCloudValue(2017, 12, 4, 5, cloudValueForStation))
