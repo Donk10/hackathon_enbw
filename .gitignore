@@ -1,6 +1,3 @@
-# ignore dataset
-.data/schoenau_2017-2018.csv
-
 # Ignore Mac DS_Store files
 .DS_Store
 
@@ -110,3 +107,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 data/schoenau_2017-2018.csv
+pandas.csv
+data/pandas_wide.csv
+
+data/matrix.npy
