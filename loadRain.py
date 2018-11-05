@@ -2,7 +2,8 @@
 
 import numpy as np
 
-# load file with cloud data
+# load file with cloud data from
+# Neckargemuend
 file_in_npArray = np.loadtxt("./data/R1_MN008.txt", dtype=str, delimiter=";")
 
 # store data and description in 2 arrays
@@ -10,8 +11,11 @@ description = file_in_npArray[0,1:4]
 rainValue_mm = np.array(file_in_npArray[1:,2:4], dtype=float)
 
 # get only relevant timeframe 01.12.2017 to 01.08.2018
-rainValue_mm = rainValue_mm[:np.where(rainValue_mm[:,0] == 201808012300)[0][0]]
+rainValue_mm = rainValue_mm[
+                    np.where(rainValue_mm[:,0] == 201712010400)[0][0]
+                    :np.where(rainValue_mm[:,0] == 201808012300)[0][0]]
 
+print(rainValue_mm.shape)
 
 '''
 Function parameters, intervalls, integer:
@@ -36,13 +40,8 @@ Returns:
 '''
 
 def getRainValue_in_mm(year, month, day, time, rainArray):
-    # write input into strings suitable for merging into timeStamp
-    yearStr = str(year)
-    monthStr = ("0"+str(month))[-2:]
-    dayStr = ("0"+str(day))[-2:]
-    timeStr = ("0"+str(time)+"00")[-4:]
-    # merge into timeStamp
-    timeStamp = int(yearStr + monthStr + dayStr + timeStr)
+    # create timeStamp like "yyyymmddtttt"
+    timeStamp = year*10**8 + month*10**6 + day*10**4 + time*10**2
     # index of cloudValueForStation, where timeStamp is
     index = np.where(rainArray[:,0] == timeStamp)
 
@@ -56,3 +55,6 @@ def getRainValue_in_mm(year, month, day, time, rainArray):
 
 # EXAMPLE: how to get values
 print(getRainValue_in_mm(2017, 12, 4, 5, rainValue_mm))
+
+# Save rain data into .txt file
+# np.savetxt("rainValues.txt", rainValue_mm)

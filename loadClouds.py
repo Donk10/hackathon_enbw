@@ -18,9 +18,10 @@ cloudValueForStation = data[np.where(data == weatherStation)[0][0]:
                            np.where(data == weatherStation)[0][-1]]
 # Only get data for relevant time frame from 01.12.2017 to 01.08.2018
 cloudValueForStation = cloudValueForStation[
-                        np.where(cloudValueForStation == 201712010000)[0][0]
-                        :np.where(cloudValueForStation == 201808020000)[0][0]
+                        np.where(cloudValueForStation[:,1] == 201712010400)[0][0]
+                        :np.where(cloudValueForStation[:,1] == 201808012300)[0][0]
                         ]
+print(cloudValueForStation.shape)
 
 '''
 Function parameters, intervalls, integer:
@@ -66,3 +67,6 @@ def getCloudValue(year, month, day, time, cloudArray):
 
 # EXAMPLE: how to get values
 print(getCloudValue(2017, 12, 4, 5, cloudValueForStation))
+
+# Save cloud data for specified weather station into .txt file
+# np.savetxt("cloudValues.txt", cloudValueForStation)
