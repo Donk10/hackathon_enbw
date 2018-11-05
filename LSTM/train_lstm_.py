@@ -84,9 +84,9 @@ def train(model, batch_size, num_epochs, lr, path_to_save_imgs):
             if torch.cuda.is_available():
                 features = features.cuda()
             optimizer.zero_grad()
-            prediction = model(features[:,:-1,:])
-            print(';;;;;;;;;;;;;;;;;;;;;;;;;', features[:,-1,:].size())
-            loss = MSE(prediction, features[:,-1,:])
+            outputs, (ht, ct) = model(features[:,:-1,:])
+            #print(';;;;;;;;;;;;;;;;;;;;;;;;;', features[:,-1,:].size())
+            loss = MSE(outputs, features[:,-1,:])
             loss.backward()
             train_loss += loss.item()
             optimizer.step()
