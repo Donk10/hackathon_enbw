@@ -1,6 +1,9 @@
 # ignore dataset
 .data/schoenau_2017-2018.csv
 
+# Ignore Mac DS_Store files
+.DS_Store
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -106,3 +109,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+data/schoenau_2017-2018.csv
