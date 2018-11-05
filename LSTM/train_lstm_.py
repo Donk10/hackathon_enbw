@@ -85,7 +85,7 @@ def train(model, batch_size, num_epochs, lr, path_to_save_imgs):
                 features = features.cuda()
             optimizer.zero_grad()
             prediction = model(features[:,:-1,:])
-            print(prediction.size(), features[:,-1,:].size())
+            print(';;;;;;;;;;;;;;;;;;;;;;;;;', features[:,-1,:].size())
             loss = MSE(prediction, features[:,-1,:])
             loss.backward()
             train_loss += loss.item()

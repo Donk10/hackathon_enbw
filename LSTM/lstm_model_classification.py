@@ -45,5 +45,5 @@ class LSTM(nn.Module):
 		#output = self.dropout_layer(ht[-1])
 		# output = self.hidden2out(output)
 		# output = self.softmax(output)
-
-		return ht[-1]
+		print(outputs.shape)
+		return outputs
