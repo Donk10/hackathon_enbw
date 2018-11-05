@@ -2,20 +2,16 @@
 
 import numpy as np
 
-# load file with cloud data from
-# Neckargemuend
-file_in_npArray = np.loadtxt("./data/R1_MN008.txt", dtype=str, delimiter=";")
+def loadRainData():
+    # load file with cloud data from
+    # Neckargemuend
+    file_in_npArray = np.loadtxt("./data/R1_MN008.txt", dtype=str, delimiter=";")
 
-# store data and description in 2 arrays
-description = file_in_npArray[0,1:4]
-rainValue_mm = np.array(file_in_npArray[1:,2:4], dtype=float)
-
-# get only relevant timeframe 01.12.2017 to 01.08.2018
-rainValue_mm = rainValue_mm[
-                    np.where(rainValue_mm[:,0] == 201712010400)[0][0]
-                    :np.where(rainValue_mm[:,0] == 201808012300)[0][0]]
-
-print(rainValue_mm.shape)
+    # store data and description in 2 arrays
+    description = file_in_npArray[0,1:4]
+    rainValue_mm = np.array(file_in_npArray[1:,2:4], dtype=float)
+    # return raind data as numpy array
+    return rainValue_mm
 
 '''
 Function parameters, intervalls, integer:
@@ -53,8 +49,10 @@ def getRainValue_in_mm(year, month, day, time, rainArray):
         # cloud value at requested time
         return rainArray[index,1]
 
+
 # EXAMPLE: how to get values
-print(getRainValue_in_mm(2017, 12, 4, 5, rainValue_mm))
+# rainValue_mm = loadRainData()
+# print(getRainValue_in_mm(2017, 12, 4, 5, rainValue_mm))
 
 # Save rain data into .txt file
 # np.savetxt("rainValues.txt", rainValue_mm)
