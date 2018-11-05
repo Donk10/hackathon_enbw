@@ -5,7 +5,7 @@ import numpy as np
 def loadRainData():
     # load file with cloud data from
     # Neckargemuend
-    file_in_npArray = np.loadtxt("./data/R1_MN008.txt", dtype=str, delimiter=";")
+    file_in_npArray = np.loadtxt("./data/R2_MN008.txt", dtype=str, delimiter=";")
 
     # store data and description in 2 arrays
     description = file_in_npArray[0,1:4]
