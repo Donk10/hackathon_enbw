@@ -7,18 +7,16 @@ import torch.optim as optim
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
 
-class LSTMClassifier(nn.Module):
+class LSTM(nn.Module):
 
-	def __init__(self, vocab_size, embedding_dim, hidden_dim, output_size):
+	def __init__(self, embedding_dim, hidden_dim, output_size):
 
-		super(LSTMClassifier, self).__init__()
+		super(LSTM, self).__init__()
 
 		self.embedding_dim = embedding_dim
 		self.hidden_dim = hidden_dim
-		self.vocab_size = vocab_size
 
-		self.embedding = nn.Embedding(vocab_size, embedding_dim)
-		self.lstm = nn.LSTM(embedding_dim, hidden_dim, num_layers=1)
+		self.lstm = nn.LSTM(embedding_dim, hidden_dim, num_layers=1, batch_first = True)
 
 		self.hidden2out = nn.Linear(hidden_dim, output_size)
 		self.softmax = nn.LogSoftmax()
@@ -31,19 +29,21 @@ class LSTMClassifier(nn.Module):
 						autograd.Variable(torch.randn(1, batch_size, self.hidden_dim)))
 
 
-	def forward(self, batch, lengths):
+	def forward(self, batch):
 		
-		self.hidden = self.init_hidden(batch.size(-1))
+		self.hidden = self.init_hidden(batch.size(0))
 
-		embeds = self.embedding(batch)
-		packed_input = pack_padded_sequence(embeds, lengths)
-		outputs, (ht, ct) = self.lstm(packed_input, self.hidden)
+		#embeds = self.embedding(batch)
+		print(batch.size())
+		print(self.hidden[0].size())
+		#packed_input = pack_padded_sequence(embeds, lengths)
+		outputs, (ht, ct) = self.lstm(batch, self.hidden)
 
 		# ht is the last hidden state of the sequences
-		# ht = (1 x batch_size x hidden_dim)
-		# ht[-1] = (batch_size x hidden_dim)
-		output = self.dropout_layer(ht[-1])
-		output = self.hidden2out(output)
-		output = self.softmax(output)
+		#ht = (1 x batch_size x hidden_dim)
+		#ht[-1] = (batch_size x hidden_dim)
+		#output = self.dropout_layer(ht[-1])
+		# output = self.hidden2out(output)
+		# output = self.softmax(output)
 
-		return output
+		return ht[-1]
