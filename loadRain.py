@@ -57,7 +57,7 @@ Function parameters, intervalls, integer:
 Returns:
     If timestamp not found: None
     Else: precipitation ammount in mm (Niederschlag)
-'''
+
 
 def getRainValue_in_mm(year, month, day, time, rainArray):
     # create timeStamp like "yyyymmddtttt"
@@ -80,3 +80,4 @@ def getRainValue_in_mm(year, month, day, time, rainArray):
 
 # Save rain data into .txt file
 # np.savetxt("rainValues.txt", rainValue_mm)
+'''
