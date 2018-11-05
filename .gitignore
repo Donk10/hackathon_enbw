@@ -109,3 +109,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+data/schoenau_2017-2018.csv
