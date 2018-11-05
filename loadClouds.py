@@ -49,8 +49,6 @@ def loadCloudData():
             newValueArray[i] = newValueArray[i-1]
     return newValueArray
 
-print(loadCloudData())
-
 
 '''
 Function parameters, intervalls, integer:
