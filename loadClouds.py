@@ -63,8 +63,13 @@ def getCloudValue(year, month, day, time, cloudArray):
 
 
 # EXAMPLE: how to get values
+<<<<<<< HEAD
 # cloudArray = loadCloudData()
 # print(getCloudValue(2017, 12, 4, 5, cloudArray))
+=======
+cloudArray = loadCloudData()
+print(getCloudValue(2017, 12, 4, 5, cloudArray))
+>>>>>>> 820da5ee49092ce873952e916b7a265a123dc97e
 
 # Save cloud data for specified weather station into .txt file
 # np.savetxt("cloudValues.txt", cloudValueForStation)
