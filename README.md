@@ -1,3 +1,5 @@
+![](https://github.com/sten2lu/hackathon_enbw/deepTrap.png?raw=True)
+
 # ENBW Hackathon – All About Traffic
 
 Traffic prediction using LSTMs for personalized Out-of-Home advertisement.
@@ -15,8 +17,8 @@ matplotlib
 ```
 
 Data used:
- - weather  ```https://cdc.dwd.de/portal/201810240858/searchview```
- - tourism  ```http://www.statistik-bw.de/TourismGastgew/Tourismus/```
+ - weather  https://cdc.dwd.de/portal/201810240858/searchview
+ - tourism  http://www.statistik-bw.de/TourismGastgew/Tourismus/
  - traffic  provided by EnBW
 
 ## Running the prediction using .py-code in LSTM directory
