@@ -25,7 +25,7 @@ def arrayTourism():
 
     csvTrouismFile            = "./data/tourism.csv"
     csvTrouismFile_DataFrame  = pd.read_csv(csvTrouismFile, sep=";")
-    monthlyArray              = csvTrouismFile_DataFrame.values[3:]
+    monthlyArray              = csvTrouismFile_DataFrame.values
 
     tourismHourly = np.array([], dtype=float)
     for m in range(np.shape(monthlyArray)[0]):
