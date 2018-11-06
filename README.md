@@ -1,4 +1,4 @@
-![alt text](./deepTrap.png)
+![alt text](./visualization/deepTrap.png)
 
 # ENBW Hackathon – All About Traffic
 
