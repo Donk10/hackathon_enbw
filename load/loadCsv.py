@@ -1,14 +1,8 @@
 #!/usr/bin/python3
 
-import numpy as np
-import pandas as pd
+import numpy    as np
+import pandas   as pd
 
-'''
- returns traffic data in numpy array like:
- [[station index, time stamp 1, value]
-  [station index, time stamp 2, value]
-  [...] ]
-'''
 def loadTraffic():
     csvFileName = "./data/schoenau_2017-2018.csv"
 

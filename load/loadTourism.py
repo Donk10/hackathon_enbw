@@ -3,6 +3,15 @@ import pandas as pd
 from IPython import display
 from calendar import monthrange
 
+'''
+    loadTourism - Function
+        loads toursim data out of .csv file
+        returns average of tourism each month
+
+    arrayTourism - Function
+        loads tourism data out of .csv file
+        returns 1-dim numpy array for relevant timeframe of our provided traffic data
+'''
 
 #retruns array with length numberOfDays total number of tourism in "month"
 #"month" [1-9]: 1 is 12.2017, 9 is 08.2018

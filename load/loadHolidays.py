@@ -1,7 +1,17 @@
-import numpy as np
-import pandas as pd
-from IPython import display
-from calendar import monthrange
+import numpy    as  np
+import pandas   as  pd
+
+from IPython    import  display
+from calendar   import  monthrange
+
+
+'''
+    loadHolidays - Function
+
+    loads national holidays out of .csv file
+
+    returns 1-dim numpy array for relevant timeframe of our provided traffic data
+'''
 
 def loadHolidays():
     # load holidays
@@ -24,6 +34,3 @@ def loadHolidays():
             else: continue
 
     return holidays
-
-
-loadHolidays()

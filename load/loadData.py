@@ -1,14 +1,20 @@
-#!/usr/bin/python3
 
-import numpy as np
+import numpy    as  np
+
+'''
+    loadWeatherData - Function
+
+    loads weather data (downloaded from 'http//:cdc.dwd.de') out of .txt file
+
+    returns 1-dim numpy array for relevant timeframe of our provided traffic data
+'''
 
 
 def loadWeatherData(filePath):
-    # load .txt file with weather data (humidity, temperature, ...)
+    # load .txt file with weather data (humidity, temperature, ...) as numpy array
     file_in_npArray = np.loadtxt(filePath, dtype=str, delimiter=";")
 
-    # store data and description in 2 arrays
-    description = file_in_npArray[0,1:4]
+    # store data in array
     data = np.array(file_in_npArray[1:,2:4], dtype=float)
 
 
@@ -42,11 +48,12 @@ def loadWeatherData(filePath):
     # get data for given time frame
     newValueArray = np.zeros_like(timeStamps)
     for i in range(timeStamps.shape[0]):
-        # newValueArray[i] = rainValue_mm[np.where(rainValue_mm[:,0] == timeStamps[i])[0][0],1]
+        # search index of timeStamp in data
         index = np.where(data[:,0] == int(timeStamps[i]))[0]
         if index.size > 0:
             newValueArray[i] = data[np.where(data[:,0] == int(timeStamps[i]))[0][0],1]
+        # if measurement at given time point is missing, take last measurement
         if index.size == 0:
             newValueArray[i] = newValueArray[i-1]
-    # Return 1-dim array
+    # Return waether data of relevant time frame in 1-dim array
     return newValueArray
