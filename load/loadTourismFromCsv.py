@@ -3,13 +3,22 @@ import pandas as pd
 from IPython import display
 from calendar import monthrange
 
+'''
+    loadTourism - Function
+        loads toursim data out of .csv file
+        returns average of tourism each month
+
+    arrayTourism - Function
+        loads tourism data out of .csv file
+        returns 1-dim numpy array for relevant timeframe of our provided traffic data
+'''
 
 #retruns array with length numberOfDays total number of tourism in "month"
 #"month" [1-9]: 1 is 12.2017, 9 is 08.2018
 #"numberOfDays": number of days in "month"
 def loadToursim(month, numberOfDays):
     #load file
-    csvTrouismFile            = "./data/tourism.csv"
+    csvTrouismFile            = "./data/schoenauTourism.csv"
     csvTrouismFile_DataFrame  = pd.read_csv(csvTrouismFile, sep=";")
     csvTrouismFile_NumpyArray = csvTrouismFile_DataFrame.values[3:]
 
@@ -25,7 +34,7 @@ def arrayTourism():
 
     csvTrouismFile            = "./data/tourism.csv"
     csvTrouismFile_DataFrame  = pd.read_csv(csvTrouismFile, sep=";")
-    monthlyArray              = csvTrouismFile_DataFrame.values[3:]
+    monthlyArray              = csvTrouismFile_DataFrame.values
 
     tourismHourly = np.array([], dtype=float)
     for m in range(np.shape(monthlyArray)[0]):
