@@ -30,11 +30,8 @@ def arrayTourism():
     tourismHourly = np.array([], dtype=float)
     for m in range(np.shape(monthlyArray)[0]):
         month, year, tourismValue = int(monthlyArray[m,0]), int(monthlyArray[m,1]), float(monthlyArray[m,2])
-        if m == 0:
-            days = monthrange(year, month)[1]
-            tourismHourly = np.append(tourismHourly, np.full(24*days-4, tourismValue))
-        elif m == (np.shape(monthlyArray)[0]-1):
-            tourismHourly = np.append(tourismHourly, np.full(22, tourismValue))
+        if m == (np.shape(monthlyArray)[0]-1):
+            tourismHourly = np.append(tourismHourly, np.full(23, tourismValue))
         else:
             days          = monthrange(year, month)[1]
             tourismHourly = np.append(tourismHourly, np.full(24*days, tourismValue))
