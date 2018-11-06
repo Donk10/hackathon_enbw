@@ -30,7 +30,7 @@ The code can't be used directly. Traffic data provided by EnBW was used and stor
 * **Arnold, Elias**
 * **Blessing, Luca**
 * **Dorkenwald, Michael**
-* **Nüth, Carsten**
+* **Lüth, Carsten**
 * **Ziegler, John**
 
 ## License
