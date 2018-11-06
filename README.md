@@ -1,4 +1,4 @@
-![alt text](https://github.com/sten2lu/hackathon_enbw/deepTrap.png "Logo Title Text 1")
+![alt text](./deepTrap.png)
 
 # ENBW Hackathon – All About Traffic
 
