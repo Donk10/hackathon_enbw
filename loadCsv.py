@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 '''
- returns cloud data in numpy array like:
+ returns traffic data in numpy array like:
  [[station index, time stamp 1, value]
   [station index, time stamp 2, value]
   [...] ]
