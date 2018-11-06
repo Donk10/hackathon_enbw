@@ -109,5 +109,5 @@ venv.bak/
 data/schoenau_2017-2018.csv
 pandas.csv
 data/pandas_wide.csv
-
+data/pandas_wide_extended.csv
 data/matrix.npy
