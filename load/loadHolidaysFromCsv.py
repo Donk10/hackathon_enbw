@@ -15,7 +15,7 @@ from calendar   import  monthrange
 
 def loadHolidays():
     # load holidays
-    holidaysCsv  = "./data/holidays.csv"
+    holidaysCsv  = "./data/schoenauHolidays.csv"
     holidaysCsv_DataFrame  = pd.read_csv(holidaysCsv, sep=";")
     holidaysNumpy = holidaysCsv_DataFrame.values
     #load traffic for reference

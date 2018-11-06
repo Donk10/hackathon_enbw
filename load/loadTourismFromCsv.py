@@ -18,7 +18,7 @@ from calendar import monthrange
 #"numberOfDays": number of days in "month"
 def loadToursim(month, numberOfDays):
     #load file
-    csvTrouismFile            = "./data/tourism.csv"
+    csvTrouismFile            = "./data/schoenauTourism.csv"
     csvTrouismFile_DataFrame  = pd.read_csv(csvTrouismFile, sep=";")
     csvTrouismFile_NumpyArray = csvTrouismFile_DataFrame.values[3:]
 
